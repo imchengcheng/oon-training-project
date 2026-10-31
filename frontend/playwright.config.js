@@ -1,0 +1,2 @@
+import { defineConfig } from '@playwright/test'
+export default defineConfig({ testDir: './e2e', timeout: 45000, retries: 0, workers: 1, reporter: [['list'], ['json', { outputFile: 'test-results/results.json' }]], use: { baseURL: process.env.E2E_URL || 'http://127.0.0.1:5173', headless: true, reducedMotion: 'reduce', screenshot: 'only-on-failure', browserName: 'chromium', ...(process.env.E2E_BROWSER_PATH ? { launchOptions: { executablePath: process.env.E2E_BROWSER_PATH } } : { channel: 'msedge' }) } })
